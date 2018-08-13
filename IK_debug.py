@@ -265,12 +265,15 @@ def test_code(test_case):
     # The angle between side_a and side_b
     beta_three = acos((side_a * side_a + side_b * side_b - side_c * side_c) / (2 * side_a * side_b))
     # The angle between the z axis of joint 3 and its connection to the WC
-    beta_four = atan2(d34, a34)
+    beta_four = acos((d34 * d34 + side_b * side_b - a34 * a34) / (2 * d34 * side_b))
 
     theta3 = pi / 2. - beta_three - beta_four
 
     R0_3 = T0_1[0:3, 0:3] * T1_2[0:3, 0:3] * T2_3[0:3, 0:3]
     R0_3 = R0_3.evalf(subs={q1: theta1, q2: theta2, q3: theta3})
+
+    # Based on some discussions in the slack channel inverting the matrix for the inverse orientation kinematics can be
+    # numerically unstable. That means there is no guarantee the process will converge.
 
     R3_6 = R0_3.transpose() * ROT_EE
 
