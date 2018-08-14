@@ -15,6 +15,7 @@ import tf
 from kuka_arm.srv import *
 from trajectory_msgs.msg import JointTrajectoryPoint
 from sympy import *
+from mpmath import radians
 
 
 def handle_calculate_IK(req):
