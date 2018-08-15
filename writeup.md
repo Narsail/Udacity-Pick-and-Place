@@ -232,3 +232,17 @@ theta4 = atan2(R3_6[2, 2], -R3_6[0, 2])
 theta5 = atan2(sqrt(R3_6[0, 2] * R3_6[0, 2] + R3_6[2, 2] * R3_6[2, 2]), R3_6[1, 2])
 theta6 = atan2(-R3_6[1, 1], R3_6[1, 0])
 ```
+
+#### 4. Successful Pick and Place run
+
+Video: https://vimeo.com/user83701479/review/285073001/bc68f52498
+
+#### 5. Ways to improve the kuka arm
+
+There are two ways (suggested by my first review) to further improve the performance of the code by
+
+* using numpy instead of sympy 
+* store the matrices so that they don't have to be created every time the IK_server.py will be reached
+
+Additionally storing the fastest paths (with joint angles) for repetitive work might be worth checking.
+
